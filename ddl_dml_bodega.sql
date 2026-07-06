@@ -1,3 +1,10 @@
+--   ──────────────────────────
+-- BodegaTech — Script de Inventario
+-- Autor: Yamila Moran
+-- Fecha: 05/07/2026
+--  ──────────────────────────
+
+
 -- ── SECCIÓN DDL ──────────────────────────
 DROP TABLE IF EXISTS inventario;
 
@@ -36,13 +43,15 @@ values
 
 -- UPDATE ventas del día
 update inventario
-set stock_actual=12
+set stock_actual - 3
 where id_producto=1;
+
 update inventario
-set stock_actual=68
-where id_producto=2
+set stock_actual - 12
+where id_producto=2;
+
 update inventario
-set stock_actual=30
+set stock_actual - 5
 where id_producto=6;
 
 
@@ -64,8 +73,6 @@ SELECT id_producto, nombre_producto, stock_actual, stock_minimo
 FROM inventario
 WHERE stock_actual <= stock_minimo AND activo = 1;
 
-
-
 -- Ver valor total del inventario activo por categoria
 SELECT
     categoria,
@@ -75,7 +82,3 @@ FROM inventario
 WHERE activo = 1
 GROUP BY categoria
 ORDER BY valor_total_stock DESC;
-
-
-
-
