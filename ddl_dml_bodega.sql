@@ -11,14 +11,15 @@ DROP TABLE IF EXISTS inventario;
 
 CREATE TABLE inventario(
 id_producto INT PRIMARY KEY,       -- Identificador único en formato entero
-nombre_producto VARCHAR(100),      -- Texto hasta 100 caracteres
-categoria VARCHAR (50),            -- Texto hasta 100 caracteres
-precio_unitario decimal(10,2),     -- para dinero 10 dígitos y 2 decimales
-stock_actual INT,                  -- Unidades disponibles
-stock_minimo INT,                  -- Umbral mínimo de reposición
-fecha_ingreso DATE,                -- Fecha de ingreso al inventario
-activo TINYINT NOT NULL DEFAULT (1)                 -- 1 = disponible, 0 = descontinuado
+nombre_producto VARCHAR(100),      -- Texto hasta 100 caracteres para limitar la descripcion de producto
+categoria VARCHAR (50),            -- Texto hasta 100 caracteres, lleva menos caracteres 
+precio_unitario decimal(10,2),     -- para evitar errores de precision en los valores
+stock_actual INT,                  -- INT porque el stock son cantidades enteras
+stock_minimo INT,                  --  INT para definir umbral mínimo de reposición
+fecha_ingreso DATE,                -- para registrar la Fecha de ingreso al inventario
+activo TINYINT NOT NULL DEFAULT (1) -- para determinar si esta activo o no 1 = disponible, 0 = descontinuado
 );
+
 
 
 
